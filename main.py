@@ -12,9 +12,26 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 # Click "Open user guide" on the EV3 extension tab for more information.
 
 
-# Create your objects here.
 ev3 = EV3Brick()
+drive = Motor(Port.C)
+SPEED = 100
+
+
+# Helper functions
+def moveForward(rot):
+    """Moves the robot forward
+
+    Parameter
+    ---------
+    rot (float): number of cycles the motor completes
+
+    Returns
+    -------
+    null
+    """
+    deg = rot * -360 # convert rotations to degrees
+    drive.run_target(SPEED, deg, Stop.BRAKE)
 
 
 # Write your program here.
-ev3.speaker.beep()
+moveForward(0.5)
